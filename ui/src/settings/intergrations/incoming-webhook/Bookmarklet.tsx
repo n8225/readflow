@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { API_BASE_URL } from '../../../constants'
-
 function createBookmarkletScript(token: string) {
   const { origin } = document.location
   const cred = btoa('api:' + token)
@@ -19,7 +17,7 @@ function createBookmarkletScript(token: string) {
   };
   d.body.appendChild(js);
 })(document, '${origin}/bookmarklet.js', function () {
-  window.rfB.boot('${origin}', '${API_BASE_URL}', '${cred}');
+  window.rfB.boot('${origin}', '/api', '${cred}');
 });
 `
 }

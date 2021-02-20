@@ -4,7 +4,6 @@ import React, { Suspense } from 'react'
 import { RouteComponentProps } from 'react-router'
 
 import authService from '../auth'
-import { API_BASE_URL } from '../constants'
 
 const GraphiQL = React.lazy(() => import('graphiql'))
 
@@ -21,7 +20,7 @@ const graphQLFetcher = (base: string) => async (graphQLParams: any) => {
   if (user.access_token) {
     headers.set('authorization', 'Bearer ' + user.access_token)
   }
-  return fetch(API_BASE_URL + base, {
+  return fetch('/api' + base, {
     method: 'post',
     headers: headers,
     credentials: 'same-origin',

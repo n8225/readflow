@@ -1,6 +1,7 @@
-import { AUTHORITY } from '../constants'
 import { MockAuthService } from './MockAuthService'
 import { OIDCAuthService } from './OIDCAuthService'
+
+const { authority } = window['runConfig']
 
 export interface User {
   expired?: boolean
@@ -15,6 +16,6 @@ export interface AuthService {
   logout: () => Promise<any>
 }
 
-const service = AUTHORITY === 'mock' ? new MockAuthService() : new OIDCAuthService()
+const service = authority === 'mock' ? new MockAuthService() : new OIDCAuthService()
 
 export default service

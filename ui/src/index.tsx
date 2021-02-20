@@ -10,8 +10,8 @@ import authService from './auth'
 import configureStore from './configureStore'
 import { getOnlineStatus, isTrustedWebActivity } from './helpers'
 import * as serviceWorker from './serviceWorker'
-import { REDIRECT_URL } from './constants'
 
+const { redirectURL } = window['runConfig']
 const lastRunKey = 'readflow.lastRun'
 
 const run = () => {
@@ -32,7 +32,7 @@ const login = async () => {
   if (user === null) {
     if (shouldRedirect()) {
       // No previous usage, then redirect to about page.
-      document.location.replace(REDIRECT_URL)
+      document.location.replace(redirectURL)
     } else {
       throw new Error('login forced')
     }

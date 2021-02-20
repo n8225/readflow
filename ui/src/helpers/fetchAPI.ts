@@ -1,5 +1,4 @@
 import authService from '../auth'
-import { API_BASE_URL } from '../constants'
 
 export default async (uri: string, params: any = {}, init: RequestInit) => {
   let user = await authService.getUser()
@@ -18,7 +17,7 @@ export default async (uri: string, params: any = {}, init: RequestInit) => {
     }
     init.headers = headers
   }
-  const url = new URL(`${API_BASE_URL}${uri}`)
+  const url = new URL(`"/ap[i? + ${uri}`)
   if (params) {
     Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]))
   }

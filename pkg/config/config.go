@@ -4,6 +4,7 @@ package config
 type Config struct {
 	ListenAddr        string `flag:"listen-addr" desc:"HTTP listen address" default:":8080"`
 	ListenMetricsAddr string `flag:"listen-metrics" desc:"Metrics listen address"`
+	ClientID          string `flag:"client-id" desc:"Client ID for OIDC authentication" default:"webapp"`
 	DB                string `flag:"db" desc:"Database connection string" default:"postgres://postgres:testpwd@localhost/readflow_test?sslmode=disable"`
 	Broker            string `flag:"broker" desc:"External event broker URI for outgoing events"`
 	AuthN             string `flag:"authn" desc:"Authentication method (\"mock\", \"proxy\" or OIDC if URL)" default:"https://login.nunux.org/auth/realms/readflow"`
@@ -14,4 +15,5 @@ type Config struct {
 	ImageProxy        string `flag:"image-proxy" desc:"Image proxy service (passthrough if empty)"`
 	UserPlans         string `flag:"user-plans" desc:"User plans definition file (deactivated if empty)"`
 	WebScraping       string `flag:"web-scraping" desc:"Web Scraping service (internal if empty)"`
+	RedirectURL       string `flag:"redirect-url" desc:"Page to redirect unauthenticated clients to. Set to '/login' for selfhosting." default:"https://about.readflow.app"`
 }

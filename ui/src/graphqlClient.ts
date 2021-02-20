@@ -3,11 +3,10 @@ import { setContext } from '@apollo/client/link/context'
 import { onError } from '@apollo/client/link/error'
 
 import authService from './auth'
-import { API_BASE_URL } from './constants'
 
 // HTTP client
 const httpLink = new HttpLink({
-  uri: API_BASE_URL + '/graphql',
+  uri: '/api/graphql',
 })
 
 // Authentication interceptor

@@ -1,5 +1,3 @@
-import { API_BASE_URL } from '../constants'
-
 function urlBase64ToUint8Array(base64String: string) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
@@ -27,7 +25,7 @@ export const subscribePush = async (registration: ServiceWorkerRegistration) => 
     let subscription = await registration.pushManager.getSubscription()
     if (!subscription) {
       // No subscription: creat a new one
-      const res = await fetch(API_BASE_URL)
+      const res = await fetch('/api')
       const data = await res.json()
       applicationServerKey = urlBase64ToUint8Array(data.vapid)
       subscription = await registration.pushManager.subscribe({

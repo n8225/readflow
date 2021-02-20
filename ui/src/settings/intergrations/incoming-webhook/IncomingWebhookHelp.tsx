@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { API_BASE_URL } from '../../../constants'
 import Masked from '../../../components/Masked'
 import { IncomingWebhook } from './models'
 import Bookmarklet from './Bookmarklet'
@@ -24,7 +23,7 @@ export default ({ data }: Props) => (
           <tbody>
             <tr>
               <th>Ingestion URL</th>
-              <td>{API_BASE_URL + '/articles'}</td>
+              <td>{'/api/articles'}</td>
             </tr>
             <tr>
               <th>Token</th>

@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { Log, UserManager } from 'oidc-client'
 
-import { AUTHORITY, CLIENT_ID } from '../constants'
 import { AuthService } from './'
+
+const { authority, clientID } = window['runConfig']
 
 export class OIDCAuthService implements AuthService {
   public userManager: UserManager
@@ -10,8 +11,8 @@ export class OIDCAuthService implements AuthService {
   constructor() {
     const redirect = encodeURIComponent(document.location.href)
     const settings = {
-      authority: AUTHORITY,
-      client_id: CLIENT_ID,
+      authority: authority,
+      client_id: clientID,
       redirect_uri: `${document.location.origin}/signin-callback.html?redirect=${redirect}`,
       silent_redirect_uri: `${document.location.origin}/silent-renew.html`,
       post_logout_redirect_uri: document.location.origin,
@@ -29,7 +30,7 @@ export class OIDCAuthService implements AuthService {
   }
 
   public getAccountUrl() {
-    return AUTHORITY + '/account?referrer=' + CLIENT_ID + '&referrer_uri=' + encodeURI(document.location.href)
+    return authority + '/account?referrer=' + clientID + '&referrer_uri=' + encodeURI(document.location.href)
   }
 
   public login() {

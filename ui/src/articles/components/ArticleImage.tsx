@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { API_BASE_URL } from '../../constants'
 import { useMedia } from '../../hooks'
 
 interface Props {
@@ -8,8 +7,7 @@ interface Props {
   alt?: string
 }
 
-const proxifyImageURL = (url: string, width: number) =>
-  `${API_BASE_URL}/img?url=${encodeURIComponent(url)}&width=${width}`
+const proxifyImageURL = (url: string, width: number) => `/api/img?url=${encodeURIComponent(url)}&width=${width}`
 
 export default ({ src, alt = '' }: Props) => {
   const mobileDisplay = useMedia('(max-width: 767px)')

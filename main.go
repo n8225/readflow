@@ -2,6 +2,7 @@ package main
 
 //go:generate go run generate.go
 //go:generate gofmt -s -w autogen/db/postgres/db_sql_migration.go
+//go:generate statik -f -src=./ui/build -p statik -dest ./pkg/assets
 
 import (
 	"context"
