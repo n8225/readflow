@@ -6,7 +6,7 @@ import authService from './auth'
 
 // HTTP client
 const httpLink = new HttpLink({
-  uri: '/api/graphql',
+  uri: window.runConfig.apiBaseURL + '/graphql',
 })
 
 // Authentication interceptor

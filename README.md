@@ -23,7 +23,9 @@ Read your Internet article flow in one place with complete peace of mind and fre
 Run the following command:
 
 ```bash
-$ go get -v github.com/ncarlier/readflow
+$ git clone https://github.com/ncarlier/readflow.git
+$ make ui
+$ make
 ```
 
 **Or** download the binary regarding your architecture:
@@ -48,7 +50,7 @@ All configuration variables are described in [etc/default/readflow.env](./etc/de
 
 ## UI
 
-You can access Web UI on http://localhost:8080/ui
+You can access Web UI on http://localhost:8080
 
 ![Screenshot](screenshot.png)
 
@@ -58,7 +60,7 @@ The documentation can be found here: https://about.readflow.app/docs
 
 ## GraphQL API
 
-You can explore the server API using GraphiQL endpoint: http://localhost:8080/graphiql
+You can explore the server API using GraphiQL endpoint: http://localhost:8080/api/graphiql
 
 ## Development
 
@@ -73,6 +75,7 @@ To be able to build the project you will need to:
 Then you can build the project using make:
 
 ```bash
+$ make ui
 $ make
 ```
 

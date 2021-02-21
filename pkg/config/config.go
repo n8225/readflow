@@ -16,4 +16,5 @@ type Config struct {
 	UserPlans         string `flag:"user-plans" desc:"User plans definition file (deactivated if empty)"`
 	WebScraping       string `flag:"web-scraping" desc:"Web Scraping service (internal if empty)"`
 	RedirectURL       string `flag:"redirect-url" desc:"Page to redirect unauthenticated clients to. Set to '/login' for selfhosting." default:"https://about.readflow.app"`
+	ApiBaseURL        string `flag:"api-base-url" desc:"URL to base api if hosted seperately from this binary."`
 }

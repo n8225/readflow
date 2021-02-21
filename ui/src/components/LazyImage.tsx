@@ -10,7 +10,8 @@ interface Props {
   alt?: string
 }
 
-const proxifyImageURL = (url: string, width: number) => `/api/img?url=${encodeURIComponent(url)}&width=${width}`
+const proxifyImageURL = (url: string, width: number) =>
+  `${window.runConfig.apiBaseURL}/img?url=${encodeURIComponent(url)}&width=${width}`
 
 export default ({ src, alt = '' }: Props) => {
   const mobileDisplay = useMedia('(max-width: 767px)')

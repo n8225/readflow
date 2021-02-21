@@ -17,7 +17,7 @@ export default async (uri: string, params: any = {}, init: RequestInit) => {
     }
     init.headers = headers
   }
-  const url = new URL(`"/ap[i? + ${uri}`)
+  const url = new URL(`${window.runConfig.apiBaseURL}${uri}`)
   if (params) {
     Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]))
   }

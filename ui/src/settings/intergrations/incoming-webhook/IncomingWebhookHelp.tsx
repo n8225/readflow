@@ -23,7 +23,7 @@ export default ({ data }: Props) => (
           <tbody>
             <tr>
               <th>Ingestion URL</th>
-              <td>{'/api/articles'}</td>
+              <td>{window.runConfig.apiBaseURL + '/articles'}</td>
             </tr>
             <tr>
               <th>Token</th>

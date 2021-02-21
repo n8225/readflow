@@ -1,5 +1,9 @@
 release/
-ui/
+ui/build
+ui/node_modules
+bookmarklet/dist
+bookmarklet/node_modules
 docs/
 landing/
 .env
+makefiles

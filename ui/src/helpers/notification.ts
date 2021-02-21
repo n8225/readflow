@@ -25,7 +25,7 @@ export const subscribePush = async (registration: ServiceWorkerRegistration) => 
     let subscription = await registration.pushManager.getSubscription()
     if (!subscription) {
       // No subscription: creat a new one
-      const res = await fetch('/api')
+      const res = await fetch(window.runConfig.apiBaseURL + '/apiInfo')
       const data = await res.json()
       applicationServerKey = urlBase64ToUint8Array(data.vapid)
       subscription = await registration.pushManager.subscribe({

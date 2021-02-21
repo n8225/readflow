@@ -3,16 +3,14 @@ import { Log, UserManager } from 'oidc-client'
 
 import { AuthService } from './'
 
-const { authority, clientID } = window['runConfig']
-
 export class OIDCAuthService implements AuthService {
   public userManager: UserManager
 
   constructor() {
     const redirect = encodeURIComponent(document.location.href)
     const settings = {
-      authority: authority,
-      client_id: clientID,
+      authority: window.runConfig.authority,
+      client_id: window.runConfig.clientID,
       redirect_uri: `${document.location.origin}/signin-callback.html?redirect=${redirect}`,
       silent_redirect_uri: `${document.location.origin}/silent-renew.html`,
       post_logout_redirect_uri: document.location.origin,
@@ -30,7 +28,13 @@ export class OIDCAuthService implements AuthService {
   }
 
   public getAccountUrl() {
-    return authority + '/account?referrer=' + clientID + '&referrer_uri=' + encodeURI(document.location.href)
+    return `(
+          window.runConfig.authority +
+          '/account?referrer=' + 
+          window.runConfig.clientID + 
+          '&referrer_uri=' + 
+          encodeURI(document.location.href)
+          `
   }
 
   public login() {

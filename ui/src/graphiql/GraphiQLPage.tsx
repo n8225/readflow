@@ -20,7 +20,7 @@ const graphQLFetcher = (base: string) => async (graphQLParams: any) => {
   if (user.access_token) {
     headers.set('authorization', 'Bearer ' + user.access_token)
   }
-  return fetch('/api' + base, {
+  return fetch(window.runConfig.apiBaseURL + base, {
     method: 'post',
     headers: headers,
     credentials: 'same-origin',

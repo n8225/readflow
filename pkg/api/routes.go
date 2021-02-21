@@ -3,9 +3,9 @@ package api
 import (
 	"net/http"
 
-	"github.com/ncarlier/readflow/pkg/assets"
 	"github.com/ncarlier/readflow/pkg/config"
 	"github.com/ncarlier/readflow/pkg/middleware"
+	"github.com/ncarlier/readflow/ui"
 )
 
 // Route is the structure of an HTTP route definition
@@ -32,7 +32,7 @@ func routes(conf *config.Config) Routes {
 	return Routes{
 		route(
 			"/",
-			assets.StaticAssets(),
+			ui.StaticHandler(),
 			middleware.Methods("GET"),
 			middleware.Cors(origin),
 		),
@@ -43,34 +43,34 @@ func routes(conf *config.Config) Routes {
 			middleware.Cors(origin),
 		),
 		route(
-			"/api",
+			"/apiIndex",
 			index(conf),
 			middleware.Methods("GET"),
 			middleware.Cors(origin),
 		),
 		route(
-			"/api/articles",
+			"/articles",
 			articles(),
 			middleware.APIKeyAuth,
 			middleware.Methods("POST"),
 			middleware.Cors("*"),
 		),
 		route(
-			"/api/articles/",
+			"/articles/",
 			download(),
 			authnMiddleware,
 			middleware.Methods("GET"),
 			middleware.Cors(origin),
 		),
 		route(
-			"/api/graphql",
+			"/graphql",
 			graphqlHandler(),
 			authnMiddleware,
 			middleware.Methods("GET", "POST"),
 			middleware.Cors(origin),
 		),
 		route(
-			"/api/admin",
+			"/admin",
 			adminHandler(),
 			middleware.IsAdmin,
 			authnMiddleware,
@@ -78,26 +78,26 @@ func routes(conf *config.Config) Routes {
 			middleware.Cors(origin),
 		),
 		route(
-			"/api/img",
+			"/img",
 			imgProxyHandler(conf),
 			middleware.Methods("GET"),
 			middleware.Cors(origin),
 		),
 		route(
-			"/api/qr",
+			"/qr",
 			qrcodeHandler(conf),
 			authnMiddleware,
 			middleware.Methods("GET"),
 			middleware.Cors(origin),
 		),
 		route(
-			"/api/healthz",
+			"/healthz",
 			healthz(),
 			middleware.Methods("GET"),
 			middleware.Cors("*"),
 		),
 		route(
-			"/api/varz",
+			"/varz",
 			varz(),
 			middleware.IsAdmin,
 			authnMiddleware,

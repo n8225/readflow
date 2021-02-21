@@ -17,7 +17,7 @@ function createBookmarkletScript(token: string) {
   };
   d.body.appendChild(js);
 })(document, '${origin}/bookmarklet.js', function () {
-  window.rfB.boot('${origin}', '/api', '${cred}');
+  window.rfB.boot('${origin}', ${window.runConfig.apiBaseURL}, '${cred}');
 });
 `
 }

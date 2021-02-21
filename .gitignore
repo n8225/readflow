@@ -7,4 +7,3 @@ _gen/
 .env
 .vscode
 .cache
-pkg/assets/statik/statik.go

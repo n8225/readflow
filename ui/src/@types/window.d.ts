@@ -6,5 +6,6 @@ interface Window {
     authority: string
     clientID: string
     redirectURL: string
+    apiBaseURL: string
   }
 }
